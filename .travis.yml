@@ -1,0 +1,15 @@
+# Instructing travis to have super user permission
+sudo: required
+
+# Instructing travis that the app needs docker CLI pre-installed
+services:
+  - docker
+
+# Instruction to build the app before it runs the script
+before_install:
+  - docker build -t nitishkumaram/docker-react -f Dockerfile.dev .
+
+# Instruction to run the test
+script:
+  - docker run nitishkumaram/docker-react npm run test -- --coverage
+# the "-- --coverage" will showcase the test result and exit after test execution
