@@ -11,5 +11,6 @@ before_install:
 
 # Instruction to run the test
 script:
-  - docker run nitishkumaram/docker-react npm run test -- --coverage
+  # - docker run nitishkumaram/docker-react npm run test -- --coverage
+  - docker run -e CI=true nitishkumaram/docker-react npm run test -- -- watchAll=false
 # the "-- --coverage" will showcase the test result and exit after test execution
